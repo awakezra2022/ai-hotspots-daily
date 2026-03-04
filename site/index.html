@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 热点日报</title>
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1b2430;
+      --muted: #566070;
+      --brand: #0d6efd;
+      --line: #dbe2ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top right, #eaf3ff, var(--bg) 45%);
+      color: var(--text);
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 48px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      letter-spacing: 0.5px;
+    }
+    .meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .source-list {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .list {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.05);
+    }
+    .title {
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    .title a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .title a:hover { color: var(--brand); }
+    .info {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary {
+      margin: 0;
+      font-size: 14px;
+      color: #2f3a4a;
+    }
+    .error {
+      margin-top: 20px;
+      padding: 14px;
+      border: 1px solid #f2b8b5;
+      border-radius: 10px;
+      background: #fff5f5;
+      color: #7f1d1d;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>AI 热点日报</h1>
+    <p class="meta" id="generatedAt">加载中...</p>
+    <ul class="source-list" id="sourceList"></ul>
+    <section class="list" id="newsList"></section>
+    <div id="errorBox"></div>
+  </main>
+  <script>
+    function createCard(item, index) {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const title = document.createElement("h2");
+      title.className = "title";
+      const link = document.createElement("a");
+      link.href = item.link;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = `${index + 1}. ${item.title}`;
+      title.appendChild(link);
+
+      const info = document.createElement("p");
+      info.className = "info";
+      info.textContent = `来源：${item.source} | 时间：${item.published_at_local || "未知时间"}`;
+
+      const summary = document.createElement("p");
+      summary.className = "summary";
+      summary.textContent = item.summary || "无摘要";
+
+      card.appendChild(title);
+      card.appendChild(info);
+      card.appendChild(summary);
+      return card;
+    }
+
+    async function loadHotspots() {
+      const generatedAt = document.getElementById("generatedAt");
+      const sourceList = document.getElementById("sourceList");
+      const newsList = document.getElementById("newsList");
+      const errorBox = document.getElementById("errorBox");
+
+      try {
+        const response = await fetch("./data/latest.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`读取数据失败: HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        generatedAt.textContent = `更新时间：${data.generated_at_local} | 条目：${data.count}`;
+
+        sourceList.innerHTML = "";
+        for (const src of data.sources || []) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = src.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = src.name;
+          li.appendChild(a);
+          sourceList.appendChild(li);
+        }
+
+        newsList.innerHTML = "";
+        for (const [index, item] of (data.items || []).entries()) {
+          newsList.appendChild(createCard(item, index));
+        }
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        errorBox.innerHTML = `<div class="error">页面加载失败：${message}<br>请先运行抓取脚本生成数据文件。</div>`;
+      }
+    }
+
+    loadHotspots();
+  </script>
+</body>
+</html>
