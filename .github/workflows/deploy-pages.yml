@@ -1,6 +1,9 @@
 name: Deploy AI Hotspots Site
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
   schedule:
     # 01:00 UTC = 09:00 Asia/Shanghai
