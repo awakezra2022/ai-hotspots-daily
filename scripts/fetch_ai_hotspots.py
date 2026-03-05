@@ -59,6 +59,46 @@ EN_AI_KEYWORDS = [
     "copilot",
 ]
 
+HOT_KEYWORD_WEIGHTS: dict[str, int] = {
+    "发布": 2,
+    "上线": 2,
+    "开源": 3,
+    "融资": 3,
+    "财报": 3,
+    "并购": 3,
+    "芯片": 3,
+    "算力": 3,
+    "模型": 3,
+    "agent": 3,
+    "智能体": 3,
+    "爆火": 4,
+    "热搜": 4,
+    "突发": 4,
+    "mwc": 2,
+}
+
+TREND_TERMS: list[str] = [
+    "openai",
+    "deepseek",
+    "anthropic",
+    "claude",
+    "gemini",
+    "gpt",
+    "llama",
+    "copilot",
+    "英伟达",
+    "nvidia",
+    "特斯拉",
+    "小米",
+    "阿里",
+    "字节",
+    "腾讯",
+    "华为",
+    "苹果",
+    "机器人",
+    "自动驾驶",
+]
+
 REQUEST_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -74,6 +114,7 @@ class FeedItem:
     link: str
     summary: str
     published_at: datetime | None
+    hotness_score: int = 0
 
 
 def fetch_feed_xml(url: str, timeout: int = 15) -> str:
@@ -214,6 +255,53 @@ def sort_key(item: FeedItem) -> datetime:
     return item.published_at or datetime.min.replace(tzinfo=timezone.utc)
 
 
+def summarize_text(item: FeedItem) -> str:
+    return f"{item.title} {item.summary}".lower()
+
+
+def title_text(item: FeedItem) -> str:
+    return item.title.lower()
+
+
+def extract_trend_terms(text: str) -> set[str]:
+    return {term for term in TREND_TERMS if term in text}
+
+
+def build_trend_frequency(items: list[FeedItem]) -> dict[str, int]:
+    freq: dict[str, int] = {}
+    for item in items:
+        terms = extract_trend_terms(title_text(item))
+        for term in terms:
+            freq[term] = freq.get(term, 0) + 1
+    return freq
+
+
+def compute_hotness_score(item: FeedItem, trend_freq: dict[str, int]) -> int:
+    text = title_text(item)
+    score = 0
+
+    for keyword, weight in HOT_KEYWORD_WEIGHTS.items():
+        if keyword in text:
+            score += weight
+
+    for term in extract_trend_terms(text):
+        # 同一话题被多条新闻反复提及，视作更“热”
+        if trend_freq.get(term, 0) > 1:
+            score += min(4, trend_freq[term] - 1)
+    return min(score, 30)
+
+
+def compute_rank_score(item: FeedItem, run_at: datetime, trend_freq: dict[str, int]) -> float:
+    hotness = compute_hotness_score(item, trend_freq)
+    if item.published_at is None:
+        recency = 0.0
+    else:
+        hours_ago = max((run_at - item.published_at).total_seconds() / 3600.0, 0.0)
+        recency = max(0.0, 120.0 - min(hours_ago, 120.0))
+    # 最新优先，热度做增益
+    return recency + hotness * 2.5
+
+
 def format_datetime(dt: datetime | None) -> str:
     if dt is None:
         return "未知时间"
@@ -240,6 +328,7 @@ def save_markdown(items: list[FeedItem], output_dir: Path, run_at: datetime) -> 
             lines.append(f"## {idx}. {item.title}")
             lines.append(f"- 来源: {item.source}")
             lines.append(f"- 时间: {format_datetime(item.published_at)}")
+            lines.append(f"- 热度分: {item.hotness_score}")
             lines.append(f"- 链接: {item.link}")
             if item.summary:
                 lines.append(f"- 摘要: {item.summary[:180]}{'...' if len(item.summary) > 180 else ''}")
@@ -260,6 +349,7 @@ def item_to_json_dict(item: FeedItem) -> dict[str, str | None]:
         "summary": item.summary[:180] + ("..." if len(item.summary) > 180 else ""),
         "published_at_utc": item.published_at.isoformat() if item.published_at else None,
         "published_at_local": format_datetime(item.published_at),
+        "hotness_score": item.hotness_score,
     }
 
 
@@ -306,31 +396,41 @@ def build_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def select_with_source_balance(items: list[FeedItem], limit: int) -> list[FeedItem]:
+def select_latest_and_hottest(items: list[FeedItem], limit: int, run_at: datetime) -> list[FeedItem]:
     if not items:
         return []
-    sorted_items = sorted(items, key=sort_key, reverse=True)
-    per_source_cap = max(2, limit // max(len(DEFAULT_SOURCES), 1) + 1)
+    trend_freq = build_trend_frequency(items)
+    scored_items = sorted(
+        items,
+        key=lambda item: (
+            compute_rank_score(item, run_at, trend_freq),
+            sort_key(item),
+        ),
+        reverse=True,
+    )
+    per_source_cap = max(3, limit // 2)
 
     selected: list[FeedItem] = []
     source_counter: dict[str, int] = {}
 
-    for item in sorted_items:
+    for item in scored_items:
         if len(selected) >= limit:
             break
         count = source_counter.get(item.source, 0)
         if count >= per_source_cap:
             continue
+        item.hotness_score = compute_hotness_score(item, trend_freq)
         selected.append(item)
         source_counter[item.source] = count + 1
 
     if len(selected) < limit:
         selected_links = {item.link for item in selected}
-        for item in sorted_items:
+        for item in scored_items:
             if len(selected) >= limit:
                 break
             if item.link in selected_links:
                 continue
+            item.hotness_score = compute_hotness_score(item, trend_freq)
             selected.append(item)
             selected_links.add(item.link)
 
@@ -372,7 +472,7 @@ def main() -> int:
         if not existing or sort_key(item) > sort_key(existing):
             dedup[key] = item
 
-    selected = select_with_source_balance(list(dedup.values()), max(args.limit, 1))
+    selected = select_latest_and_hottest(list(dedup.values()), max(args.limit, 1), run_at)
     output_path = save_markdown(selected, Path(args.output_dir), run_at)
     site_json = save_site_json(selected, Path(args.site_dir), run_at)
     print(f"[OK] 已生成 {len(selected)} 条: {output_path}")
