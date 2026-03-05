@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-03-05T02:35:33.759650+00:00",
-  "generated_at_local": "2026-03-05 10:35:33 CST",
+  "generated_at_utc": "2026-03-05T04:04:14.306012+00:00",
+  "generated_at_local": "2026-03-05 12:04:14 CST",
   "count": 10,
   "sources": [
     {
@@ -27,66 +27,159 @@
   "items": [
     {
       "source": "IT之家",
+      "title": "阿里批准千问技术负责人林俊旸辞职，将成立基础模型支持小组",
+      "link": "https://www.ithome.com/0/926/093.htm",
+      "summary": "3 月 5 日上午消息，今天上午，阿里巴巴 CEO 吴泳铭在内部邮件中回应林俊旸离职一事。他表示，将继续坚持开源模型策略，持续加大 AI 研发投入和吸纳优秀人才力度。 以下为邮件全文： 各位通义实验室同学： 公司已决定批准林俊旸同学的辞职 ，感谢林俊旸过去在岗位上的付出。靖人会继续带领通义实验室推进后续工作。同时公司将成立基础模型支持小组，由我，靖人，范禹共...",
+      "published_at_utc": "2026-03-05T02:55:56+00:00",
+      "published_at_local": "2026-03-05 10:55",
+      "hotness_score": 15,
+      "event_id": "cee0fcd03c0a",
+      "final_score": 145.42,
+      "score_breakdown": {
+        "recency": 98.42,
+        "media_hotness": 15,
+        "social_heat": 12,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 5,
+        "sample_evidence": "[wechat] 机器之心 Qwen 突发!阿里 Qwen 深夜地震,林俊旸官宣「下台离开」 引自 机器之心 太突然了!深夜, Qwen 负责人林俊旸突然发布推文,宣布自己将离开..."
+      }
+    },
+    {
+      "source": "IT之家",
       "title": "微软发布 Phi-4-Reasoning-Vision-15B 开源模型，能自主决定何时思考的小型多模态 AI",
       "link": "https://www.ithome.com/0/926/026.htm",
       "summary": "IT之家 3 月 5 日消息，据微软官方开发者社区博客今日消息，微软发布了一款 Phi-4-Reasoning-Vision-15B 模型，这是一款视觉推理模型。 它结合了高分辨率视觉感知与选择性、任务感知的推理，使其成为 Phi-4 系列中 首个同时实现“看得清楚”和“想得深入”的小语言模型（SLM） 。 传统的视觉模型仅执行被动的感知 —— 识别图像中“...",
       "published_at_utc": "2026-03-05T00:55:46+00:00",
       "published_at_local": "2026-03-05 08:55",
-      "hotness_score": 8
+      "hotness_score": 16,
+      "event_id": "94f172d02f5e",
+      "final_score": 140.64,
+      "score_breakdown": {
+        "recency": 95.64,
+        "media_hotness": 16,
+        "social_heat": 9,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 2,
+        "sample_evidence": "[wechat] 机器之心 DeepSeek 【1.28日AI资讯】 Deepseek 推出新OCR架构,提升AI理解复杂文档能力 模型来源: 机器之心 1月27日, DeepS..."
+      }
     },
     {
       "source": "IT之家",
-      "title": "IT早报 0305：4599 元起苹果最便宜笔记本 MacBook Neo 发布；1 元 1 秒字节 Seedance2.0 定价公布；华为乾崑全球首发 896 线激光雷达...",
-      "link": "https://www.ithome.com/0/926/005.htm",
-      "summary": "“IT早报”时间，大家好，现在是 2026 年 3 月 5 日星期四，今天的重要科技资讯有： 1、苹果最便宜笔记本 MacBook Neo 发布：搭载 A18 Pro 处理器、没有刘海，售价 4599 元起 新款 MacBook Neo 搭载 A18 Pro 芯片，配备 13 英寸 Liquid 视网膜无刘海屏，电池续航达 16 小时，提供四款靓丽配色。苹果...",
-      "published_at_utc": "2026-03-04T23:21:43+00:00",
-      "published_at_local": "2026-03-05 07:21",
-      "hotness_score": 8
+      "title": "Anthropic CEO 阿莫代伊炮轰 OpenAI 奥尔特曼：全是谎言，与军方一起作秀",
+      "link": "https://www.ithome.com/0/926/038.htm",
+      "summary": "北京时间 3 月 5 日，美国 AI 公司 Anthropic 联合创始人兼 CEO 达里奥 · 阿莫代伊（Dario Amodei）对 OpenAI CEO 萨姆 · 奥尔特曼颇为不满（Sam Altman）。据科技网站 The Information 报道，阿莫代伊在一份员工备忘录中将 OpenAI 与美国国防部（又叫战争部）的合作称为“ 安全作秀 ”。...",
+      "published_at_utc": "2026-03-05T01:30:57+00:00",
+      "published_at_local": "2026-03-05 09:30",
+      "hotness_score": 8,
+      "event_id": "7d3bbb5cbbc4",
+      "final_score": 140.45,
+      "score_breakdown": {
+        "recency": 96.45,
+        "media_hotness": 8,
+        "social_heat": 16,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 29,
+        "sample_evidence": "[wechat] 机器之心 大模型 国内唯一全面对标OpenAI的创业公司, 大模型 已经出到第三代 机器之心 报道作者:泽南、杜伟中国 大模型 公司,正在进入竞争的新阶段.仅用..."
+      }
     },
     {
       "source": "IT之家",
-      "title": "华为和中国移动完成全球首个规模部署无线网络智能体，40 万 5G 站点升级",
-      "link": "https://www.ithome.com/0/926/013.htm",
-      "summary": "IT之家 3 月 5 日消息，3 月 2 日，在 MWC 2026 巴塞罗那期间的移动 AI 产业峰会上，华为与中国移动联合发布了 2025 年度高阶示范区 AI+ 网络的实践成果。 IT之家从官方介绍获悉，中国移动已建成全球最大规模 5G/5G-A 网络， 拥有超 277 万 5G 基站、5G 用户超 6 亿、5G 人口覆盖率达 96% 。在此基础上，中国...",
-      "published_at_utc": "2026-03-04T23:53:42+00:00",
-      "published_at_local": "2026-03-05 07:53",
-      "hotness_score": 6
+      "title": "黄仁勋：英伟达对 OpenAI 的 300 亿美元投资“可能是最后一次”",
+      "link": "https://www.ithome.com/0/926/015.htm",
+      "summary": "IT之家 3 月 5 日消息，CNBC 今天（3 月 5 日）发布博文，报道称在摩根士丹利科技、媒体与电信大会上，英伟达首席执行官黄仁勋明确表示，近期对 OpenAI 的 300 亿美元（IT之家注：现汇率约合 2074.52 亿元人民币）投资， 可能是后者年底 IPO 前的“最后一次”。 IT之家注：IPO 指一家私有公司首次向公众发行股票，也就是常说的“...",
+      "published_at_utc": "2026-03-04T23:58:09+00:00",
+      "published_at_local": "2026-03-05 07:58",
+      "hotness_score": 2,
+      "event_id": "7108da8211d9",
+      "final_score": 132.3,
+      "score_breakdown": {
+        "recency": 94.3,
+        "media_hotness": 2,
+        "social_heat": 16,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 29,
+        "sample_evidence": "[wechat] 机器之心 大模型 国内唯一全面对标OpenAI的创业公司, 大模型 已经出到第三代 机器之心 报道作者:泽南、杜伟中国 大模型 公司,正在进入竞争的新阶段.仅用..."
+      }
+    },
+    {
+      "source": "36氪",
+      "title": "“捏Ta”完成超千万美金PreA+轮融资",
+      "link": "https://36kr.com/newsflashes/3709489107726470?f=rss",
+      "summary": "36氪获悉，近日，AI原生社区捏Ta宣布完成超千万美金的Pre A+轮融资，由九坤创投领投，BV百度风投跟投，源码资本、奇绩创坛等老股东超额跟进。这一轮融资将主要用于三个方向：招募面向全球拓展的顶尖人才，技术研发投入以及新产品线拓展。",
+      "published_at_utc": "2026-03-05T03:35:22+00:00",
+      "published_at_local": "2026-03-05 11:35",
+      "hotness_score": 3,
+      "event_id": "b067863947bf",
+      "final_score": 130.33,
+      "score_breakdown": {
+        "recency": 99.33,
+        "media_hotness": 3,
+        "social_heat": 8,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 1,
+        "sample_evidence": "[wechat] 新智元 千问 VITURE获1亿美元融资; 千问 即将发布首款同名AI眼镜;致敬未知完成超亿元Pre-A轮融资 | 新智 观察 千问 即将发布首款同名AI眼镜2..."
+      }
     },
     {
       "source": "IT之家",
-      "title": "云鲸逍遥 003 洗地机器人发布：全智能高端自维护，新品首发价 5199 元起",
-      "link": "https://www.ithome.com/0/926/003.htm",
-      "summary": "IT之家 3 月 5 日消息，云鲸逍遥 003 洗地机器人于昨日发布并开启预售，京东平台新品首发价 5199 元起（新品价 6334.11 元-限时首发立减 100-国补 15%-晒单有礼 100 元），3 月 23 日现货首发。 IT之家从官方介绍获悉，新品定位“全智能高端自维护洗地机器人”， 搭载双目视觉感知技术和 VLM 万物识别大模型 ，支持毫米级高...",
-      "published_at_utc": "2026-03-04T23:06:38+00:00",
-      "published_at_local": "2026-03-05 07:06",
-      "hotness_score": 6
-    },
-    {
-      "source": "IT之家",
-      "title": "听歌也能“明明白白”：苹果 Apple Music 上线 AI 内容溯源标签",
-      "link": "https://www.ithome.com/0/926/014.htm",
-      "summary": "IT之家 3 月 5 日消息，科技媒体 9to5Mac 昨日（3 月 4 日）发布博文，报道称苹果面向 Apple Music 平台推出“透明度标签”（Transparency Tags）， 明确标注音乐素材是否使用 AI 技术。 这项新规要求唱片公司和内容发行商未来向其平台提交新内容时，必须明确标注音乐、封面等创作环节是否使用了人工智能（AI）技术。 IT...",
-      "published_at_utc": "2026-03-04T23:56:07+00:00",
-      "published_at_local": "2026-03-05 07:56",
-      "hotness_score": 5
-    },
-    {
-      "source": "雷峰网",
-      "title": "擎羽科技完成天使轮融资：宇树天使投资方领投，押注仿生柔性机器人",
-      "link": "https://www.leiphone.com/category/ai/1uKAuRYu562APkJt.html",
-      "summary": "仿生柔性机器人公司「擎羽科技」近日完成数千万人民币天使轮融资。本轮融资由德迅投资领投，老股东奇绩创坛持续加注。资金将主要用于技术研发投入，加快产品迭代更新。 擎羽科技成立于 2025 年 3 月，聚焦新一代仿生柔性机器人，试图解决机器人进入真实世界时长期存在的非标环境适配难、部署成本高、人机协作不自然等问题。与传统强调刚性结构与高确定性的技术路径不同，擎羽选...",
-      "published_at_utc": "2026-03-04T08:24:00+00:00",
-      "published_at_local": "2026-03-04 16:24",
-      "hotness_score": 7
-    },
-    {
-      "source": "雷峰网",
-      "title": "比亚迪硬抗导弹！车身完好没起火，乘客仅轻伤；马云与阿里、蚂蚁核心管理层齐聚谈AI；OpenAI与美军方合作惹众怒：ChatGPT卸载量爆增295%",
-      "link": "https://www.leiphone.com/category/zaobao/FADiQEiJYEW0rqjk.html",
-      "summary": "要闻提示 1.OpenAI 与美国防部合作惹众怒：ChatGPT 卸载量大增 295%，一星评价暴涨 775% 2.比亚迪车在以色列扛住了一枚导弹！车身完好没起火，乘客仅轻伤 3.马云与阿里、蚂蚁核心管理层罕见齐聚谈AI 4.李开复谈“Anthropic 指责中国蒸馏 AI 模型”：小题大做，这公司还欠我 3000 美元稿费 5.百度智能云技术委员会主席孙珂...",
-      "published_at_utc": "2026-03-04T03:02:00+00:00",
-      "published_at_local": "2026-03-04 11:02",
-      "hotness_score": 8
+      "title": "消息称陈立武松口，英特尔 18A 工艺制程考虑开放对外代工",
+      "link": "https://www.ithome.com/0/926/055.htm",
+      "summary": "IT之家 3 月 5 日消息，据路透社今日报道，英特尔 CFO David Zinsner 周三在旧金山的一次科技会议上表示，英特尔 CEO 陈立武现在开始 将其 18A 制造技术视为对外客户的潜在产品 ，此前该技术主要被用于内部。 这可能标志着去年陈立武提出的转型战略的一个重大变更，当时他表示， 他相信英特尔 18A 制造工艺只有用于英特尔自己的产品才能产...",
+      "published_at_utc": "2026-03-05T02:24:07+00:00",
+      "published_at_local": "2026-03-05 10:24",
+      "hotness_score": 0,
+      "event_id": "d3f6dbc0ea85",
+      "final_score": 125.68,
+      "score_breakdown": {
+        "recency": 97.68,
+        "media_hotness": 0,
+        "social_heat": 8,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 1,
+        "sample_evidence": "[wechat] 新智元 AI 中美贸易停战,腾讯、华为、英特尔等牵手 新智元 AI 生态平台 【2018 新智元 AI 技术峰会倒计时 2 天】2018年3月29日,北京举办的..."
+      }
     },
     {
       "source": "雷峰网",
@@ -95,25 +188,140 @@
       "summary": "3月4日凌晨，因阿里云Coding Plan订阅火爆导致模型API调用量暴涨，阿里云发布公告称，将阶段性调整Coding Plan优惠活动，以保障用户体验。调整后，其首购优惠额度将于每日9：30-11：30、14:30-16:30两个时间段限量供应。 据悉，阿里云Coding Plan于2月22日上线优惠活动，新用户首购可享2折优惠，其中每月18000次请求...",
       "published_at_utc": "2026-03-04T09:11:00+00:00",
       "published_at_local": "2026-03-04 17:11",
-      "hotness_score": 4
+      "hotness_score": 4,
+      "event_id": "ac7eb0478f7c",
+      "final_score": 110.77,
+      "score_breakdown": {
+        "recency": 73.77,
+        "media_hotness": 4,
+        "social_heat": 13,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 6,
+        "sample_evidence": "[wechat] 机器之心 Qwen 今日开源(2026-1-30):阿里千问 Qwen 3-ASR开源,AuT编码器赋能52语种识别,非自回归对齐精度超越传统模型 Qwen 3..."
+      }
     },
     {
-      "source": "雷峰网",
-      "title": "财报对比：寒武纪盈利市场却反应平静，沐曦、摩尔仍缺大单",
-      "link": "https://www.leiphone.com/category/chips/mu8V7pbuWbD4avC9.html",
-      "summary": "作者 | 赵之齐 编辑 | 包永刚 上周，寒武纪、沐曦与摩尔线程在同一天发布了业绩快报。 寒武纪率先破局盈利，沐曦亏损持续收窄，摩尔线程营收高速增长。 然而，市场对三家公司此次交出的成绩单，并不能算满意。 “二级市场对寒武纪的预期，是他们公开数据的三四倍”“沐曦和摩尔线程如果还没有新的大订单出来，股价也就基本这样了”，有分析师指出。 三家公司业绩快报信息整理...",
-      "published_at_utc": "2026-03-04T10:14:00+00:00",
-      "published_at_local": "2026-03-04 18:14",
-      "hotness_score": 3
+      "source": "36氪",
+      "title": "一家想让外骨骼成为「人体器官」的公司，再获亿元级融资",
+      "link": "https://36kr.com/p/3706881778069893?f=rss",
+      "summary": "3月5日，外骨骼机器人公司程天科技宣布又拿到一笔亿元级B+轮融资。这是一年间的第二笔钱，由农银资本领投，汇川产投、杭州资本跟投。 过去一年，在具身智能热潮带动下，C端市场对外骨骼机器人有了更强的期待和热情。外骨骼可穿戴产品也走出医院和康复机构，零星出现在景点、田径场、以及家庭场景中。 四年前，程天科技创始人、CEO王天曾告诉36氪，他认为外骨骼机器人未来会成...",
+      "published_at_utc": "2026-03-05T02:18:31+00:00",
+      "published_at_local": "2026-03-05 10:18",
+      "hotness_score": 11,
+      "event_id": "6e626cc309c8",
+      "final_score": 108.55,
+      "score_breakdown": {
+        "recency": 97.55,
+        "media_hotness": 11,
+        "social_heat": 0,
+        "verification_bonus": 0
+      },
+      "verification": {
+        "verified": false,
+        "channels": [
+          "media"
+        ],
+        "evidence_count": 0,
+        "sample_evidence": ""
+      }
     },
     {
       "source": "爱范儿",
-      "title": "看遍了所有的「AI PC」，原来 Mac 一直在这里｜AI 器物志",
-      "link": "https://www.ifanr.com/1656811?utm_source=rss&utm_medium=rss&utm_campaign=",
-      "summary": "苹果在 AI 时代之前的每一张牌，今天看都打得恰到好处，但这真的是巧合么？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。 爱范儿 | 原文链接 · 查看评论 · 新浪微博",
-      "published_at_utc": "2026-03-04T13:43:19+00:00",
-      "published_at_local": "2026-03-04 21:43",
-      "hotness_score": 0
+      "title": "一夜之间，全球 AI 圈都在转发这条告别推文",
+      "link": "https://www.ifanr.com/1656681?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "summary": "千问站到了新的十字路口 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。 爱范儿 | 原文链接 · 查看评论 · 新浪微博",
+      "published_at_utc": "2026-03-04T05:57:38+00:00",
+      "published_at_local": "2026-03-04 13:57",
+      "hotness_score": 2,
+      "event_id": "f751b8828ef2",
+      "final_score": 107.29,
+      "score_breakdown": {
+        "recency": 69.29,
+        "media_hotness": 2,
+        "social_heat": 16,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 34,
+        "sample_evidence": "[wechat] 机器之心 千问 AI核爆前夜:GPT-5.4突泄露, 千问 深夜发新品,DeepSeek V4下周见? 阿里 千问 开源四款Qwen3.5小尺寸模型 4. 证券..."
+      }
+    },
+    {
+      "source": "爱范儿",
+      "title": "这些刷屏的「战地实况」都是 AI 生成的？5 招让你避免上当",
+      "link": "https://www.ifanr.com/1656708?utm_source=rss&utm_medium=rss&utm_campaign=",
+      "summary": "真正重要的事实，不会因为晚转发两小时消失 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。 爱范儿 | 原文链接 · 查看评论 · 新浪微博",
+      "published_at_utc": "2026-03-04T10:00:30+00:00",
+      "published_at_local": "2026-03-04 18:00",
+      "hotness_score": 0,
+      "event_id": "9ef5a32879bd",
+      "final_score": 103.91,
+      "score_breakdown": {
+        "recency": 74.91,
+        "media_hotness": 0,
+        "social_heat": 9,
+        "verification_bonus": 20
+      },
+      "verification": {
+        "verified": true,
+        "channels": [
+          "media",
+          "wechat"
+        ],
+        "evidence_count": 2,
+        "sample_evidence": "[wechat] 新智元 Qwen AI公众号精选速览(2026.02.15) 新智元 驾驭工程智能体工作流文档导航架构约束效率革命 点击图片... 在 Qwen -Image等..."
+      }
     }
-  ]
+  ],
+  "meta": {
+    "social_status": "degraded",
+    "social_failures": [
+      "weibo: 官方失败(HTTP Error 403: Forbidden), 回退源无数据",
+      "zhihu: 官方失败(HTTP Error 401: Authorization Required), 回退失败(HTTP Error 403: Forbidden)"
+    ],
+    "social_channels": [
+      {
+        "channel": "weibo",
+        "provider": "fallback",
+        "status": "error",
+        "message": "官方与回退源均无可用数据"
+      },
+      {
+        "channel": "zhihu",
+        "provider": "fallback",
+        "status": "error",
+        "message": "官方失败，回退失败: HTTP Error 403: Forbidden"
+      },
+      {
+        "channel": "wechat",
+        "provider": "sogou",
+        "status": "ok",
+        "message": "机器之心 命中 58 条"
+      },
+      {
+        "channel": "wechat",
+        "provider": "sogou",
+        "status": "ok",
+        "message": "量子位 命中 57 条"
+      },
+      {
+        "channel": "wechat",
+        "provider": "sogou",
+        "status": "ok",
+        "message": "新智元 命中 55 条"
+      }
+    ]
+  }
 }

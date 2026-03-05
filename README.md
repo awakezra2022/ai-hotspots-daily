@@ -2,6 +2,12 @@
 
 每日抓取中文科技媒体 AI 热点，默认输出 10 条，并同步更新网站数据。
 
+当前版本已支持：
+
+- 最新 + 最火综合排序（发布时间 + 媒体热度 + 社媒热度）
+- 社媒交叉验证（微博、知乎、微信公众号：机器之心/量子位/新智元）
+- 事件去重（同一事件只保留最高分，尽量覆盖 10 个事件）
+
 ## 已接入来源
 
 - 36氪：`https://36kr.com/feed`
@@ -23,11 +29,28 @@ python3 scripts/fetch_ai_hotspots.py --limit 10
 - `--output-dir`：输出目录（默认 `output`）
 - `--site-dir`：网站目录（默认 `site`，会写入 `site/data/latest.json`）
 
+## 排序与验证规则
+
+- `final_score = recency_score + media_hotness_score + social_heat_score + verification_bonus`
+- 交叉验证类别：`media`、`weibo`、`zhihu`、`wechat`
+- 命中类别 `>=2` 记为 `verified=true`
+- 社媒源失败不会阻断日报生成，`meta.social_status` 会标注为 `degraded`
+
 ## 输出文件
 
 - 每日文件：`output/ai_hotspots_YYYY-MM-DD.md`
 - 最新快照：`output/latest_ai_hotspots.md`
 - 网站数据：`site/data/latest.json`
+
+`site/data/latest.json` 新增字段：
+
+- `items[].event_id`
+- `items[].final_score`
+- `items[].score_breakdown`
+- `items[].verification`
+- `meta.social_status`
+- `meta.social_failures`
+- `meta.social_channels`
 
 ## 本地打开网站
 

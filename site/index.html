@@ -12,6 +12,10 @@
       --muted: #566070;
       --brand: #0d6efd;
       --line: #dbe2ea;
+      --ok: #0f766e;
+      --ok-bg: #dcfce7;
+      --warn: #9a3412;
+      --warn-bg: #ffedd5;
     }
     * { box-sizing: border-box; }
     body {
@@ -35,6 +39,39 @@
       margin: 0;
       color: var(--muted);
       font-size: 14px;
+    }
+    .social-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .social-title {
+      margin: 0 0 6px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .social-status {
+      margin: 0;
+      font-size: 13px;
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .social-status.ok {
+      color: var(--ok);
+      background: var(--ok-bg);
+    }
+    .social-status.degraded {
+      color: var(--warn);
+      background: var(--warn-bg);
+    }
+    .social-list {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
     }
     .source-list {
       margin: 12px 0 0;
@@ -65,14 +102,46 @@
     }
     .title a:hover { color: var(--brand); }
     .info {
-      margin: 0 0 8px;
+      margin: 0;
       color: var(--muted);
       font-size: 13px;
     }
+    .score-row {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .score-pill {
+      font-size: 12px;
+      color: #0b3a8a;
+      background: #dbeafe;
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+    .verify-pill {
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+    .verify-pill.ok {
+      color: var(--ok);
+      background: var(--ok-bg);
+    }
+    .verify-pill.no {
+      color: #7f1d1d;
+      background: #fee2e2;
+    }
     .summary {
-      margin: 0;
+      margin: 8px 0 0;
       font-size: 14px;
       color: #2f3a4a;
+    }
+    .evidence {
+      margin: 6px 0 0;
+      color: #334155;
+      font-size: 13px;
     }
     .error {
       margin-top: 20px;
@@ -88,6 +157,13 @@
   <main class="wrap">
     <h1>AI 热点日报</h1>
     <p class="meta" id="generatedAt">加载中...</p>
+
+    <section class="social-box">
+      <p class="social-title">社媒交叉验证通道</p>
+      <p id="socialStatus" class="social-status degraded">加载中...</p>
+      <ul class="social-list" id="socialList"></ul>
+    </section>
+
     <ul class="source-list" id="sourceList"></ul>
     <section class="list" id="newsList"></section>
     <div id="errorBox"></div>
@@ -110,14 +186,69 @@
       info.className = "info";
       info.textContent = `来源：${item.source} | 时间：${item.published_at_local || "未知时间"}`;
 
+      const scoreRow = document.createElement("div");
+      scoreRow.className = "score-row";
+
+      const score = document.createElement("span");
+      score.className = "score-pill";
+      const finalScore = typeof item.final_score === "number" ? item.final_score.toFixed(2) : "-";
+      score.textContent = `综合分 ${finalScore}`;
+
+      const verify = document.createElement("span");
+      const verified = Boolean(item.verification && item.verification.verified);
+      verify.className = `verify-pill ${verified ? "ok" : "no"}`;
+      const channels = (item.verification && Array.isArray(item.verification.channels) && item.verification.channels.length)
+        ? item.verification.channels.join("+")
+        : "media";
+      verify.textContent = `${verified ? "已交叉验证" : "未验证"} (${channels})`;
+
+      scoreRow.appendChild(score);
+      scoreRow.appendChild(verify);
+
       const summary = document.createElement("p");
       summary.className = "summary";
       summary.textContent = item.summary || "无摘要";
 
+      const evidence = document.createElement("p");
+      evidence.className = "evidence";
+      evidence.textContent = `验证证据：${(item.verification && item.verification.sample_evidence) || "无"}`;
+
       card.appendChild(title);
       card.appendChild(info);
+      card.appendChild(scoreRow);
       card.appendChild(summary);
+      card.appendChild(evidence);
       return card;
+    }
+
+    function renderSocialMeta(meta) {
+      const socialStatus = document.getElementById("socialStatus");
+      const socialList = document.getElementById("socialList");
+      socialList.innerHTML = "";
+
+      if (!meta) {
+        socialStatus.textContent = "未提供社媒状态";
+        socialStatus.className = "social-status degraded";
+        return;
+      }
+
+      const status = meta.social_status || "degraded";
+      socialStatus.textContent = status === "ok" ? "状态正常" : "部分通道降级";
+      socialStatus.className = `social-status ${status === "ok" ? "ok" : "degraded"}`;
+
+      const channels = Array.isArray(meta.social_channels) ? meta.social_channels : [];
+      for (const entry of channels) {
+        const li = document.createElement("li");
+        li.textContent = `${entry.channel}/${entry.provider}: ${entry.status} - ${entry.message}`;
+        socialList.appendChild(li);
+      }
+
+      const failures = Array.isArray(meta.social_failures) ? meta.social_failures : [];
+      for (const failure of failures) {
+        const li = document.createElement("li");
+        li.textContent = `失败原因：${failure}`;
+        socialList.appendChild(li);
+      }
     }
 
     async function loadHotspots() {
@@ -133,6 +264,8 @@
         }
         const data = await response.json();
         generatedAt.textContent = `更新时间：${data.generated_at_local} | 条目：${data.count}`;
+
+        renderSocialMeta(data.meta);
 
         sourceList.innerHTML = "";
         for (const src of data.sources || []) {
